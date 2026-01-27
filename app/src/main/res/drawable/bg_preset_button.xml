@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Combined selected+focused: show both selection indicator and focus highlight -->
+    <item android:state_selected="true" android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/admin_primary_focused" />
+            <stroke android:width="3dp" android:color="@color/white" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <!-- Selected only: white border indicates selection -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/admin_primary_focused" />
+            <stroke android:width="2dp" android:color="@color/white" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <!-- Focused only: lighter background -->
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/admin_primary_focused" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/admin_primary_focused" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <!-- Default state -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/admin_primary" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+</selector>

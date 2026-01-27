@@ -1,0 +1,127 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/admin_background"
+    android:orientation="vertical"
+    android:padding="48dp">
+
+    <TextView
+        android:id="@+id/tvPinTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/onboarding_pin_title"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvPinDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/onboarding_pin_description"
+        android:textColor="@color/admin_text_secondary"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/etPin"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_admin_input"
+        android:digits="0123456789"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/onboarding_pin_hint"
+        android:imeOptions="actionNext"
+        android:inputType="numberPassword"
+        android:maxLength="6"
+        android:nextFocusUp="@id/etPin"
+        android:nextFocusDown="@id/etPinConfirm"
+        android:nextFocusLeft="@id/etPin"
+        android:nextFocusRight="@id/etPin"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/admin_text_secondary"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/etPinConfirm"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_admin_input"
+        android:digits="0123456789"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/onboarding_pin_confirm_hint"
+        android:imeOptions="actionDone"
+        android:inputType="numberPassword"
+        android:maxLength="6"
+        android:nextFocusDown="@id/btnPinBack"
+        android:nextFocusUp="@id/etPin"
+        android:nextFocusLeft="@id/etPinConfirm"
+        android:nextFocusRight="@id/etPinConfirm"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/admin_text_secondary"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvPinError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/status_bad"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnPinBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_admin_button"
+            app:backgroundTint="@null"
+            android:focusable="true"
+            android:focusableInTouchMode="false"
+            android:nextFocusLeft="@id/btnPinBack"
+            android:nextFocusRight="@id/btnPinNext"
+            android:nextFocusUp="@id/etPinConfirm"
+            android:nextFocusDown="@id/btnPinBack"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            android:stateListAnimator="@null"
+            android:text="@string/onboarding_back"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnPinNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/bg_admin_button"
+            app:backgroundTint="@null"
+            android:focusable="true"
+            android:focusableInTouchMode="false"
+            android:nextFocusLeft="@id/btnPinBack"
+            android:nextFocusRight="@id/btnPinNext"
+            android:nextFocusUp="@id/etPinConfirm"
+            android:nextFocusDown="@id/btnPinNext"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            android:stateListAnimator="@null"
+            android:text="@string/onboarding_next"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>

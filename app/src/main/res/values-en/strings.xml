@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App name -->
+    <string name="app_name">KidLock</string>
+
+    <!-- Main screen -->
+    <string name="remaining_time_placeholder">0:00:00</string>
+    <string name="remaining_time_format">%s</string>
+    <string name="enter_code">Enter Code to Extend Time</string>
+
+    <!-- Admin panel -->
+    <string name="admin_panel">Admin Panel</string>
+    <string name="exit">Exit</string>
+    <string name="remaining_time_admin_format">Time remaining: %s</string>
+
+    <!-- Admin sections -->
+    <string name="section_dashboard">Monitoring</string>
+    <string name="section_settings">Settings</string>
+    <string name="section_access">Access</string>
+    <string name="section_system">System</string>
+
+    <!-- Codes section -->
+    <string name="generate_codes_label">Generate codes:</string>
+    <string name="code_count_hint">Count</string>
+    <string name="minutes_hint">Minutes</string>
+    <string name="generate_button">Generate</string>
+    <string name="generate_codes_free">Generate 3 Codes</string>
+    <string name="generate_codes_paid">Generate New Codes</string>
+    <string name="codes_list_label">Codes list:</string>
+    <string name="code_status_used">Used</string>
+    <string name="code_status_unused">Not used</string>
+    <string name="time_added_minutes_format">+%d min</string>
+    <string name="delete_button">Delete</string>
+
+    <!-- Time section -->
+    <string name="remaining_time_label">Time remaining: --</string>
+    <string name="daily_limit_label">Daily limit (minutes):</string>
+    <string name="set_button">Set</string>
+    <string name="unlock_button">Unlock</string>
+
+    <!-- Security section -->
+    <string name="change_pin_label">Change PIN:</string>
+    <string name="new_pin_hint">New PIN</string>
+    <string name="change_button">Change</string>
+
+    <!-- Settings section -->
+    <string name="autostart_label">App autostart:</string>
+    <string name="autostart_description">Automatically start the app when device boots</string>
+    <string name="app_blocking_label">App blocking:</string>
+    <string name="app_blocking_description">Enable app blocking when time expires</string>
+    <string name="permissions_status_label">Permissions status:</string>
+    <string name="accessibility_status_placeholder">Accessibility Service: --</string>
+    <string name="accessibility_status_format">Accessibility Service: %s</string>
+    <string name="accessibility_enabled">Enabled</string>
+    <string name="accessibility_disabled">Disabled</string>
+    <string name="accessibility_settings_button">Configure Accessibility Service</string>
+    <string name="usage_stats_status_placeholder">Usage Stats: --</string>
+    <string name="usage_stats_status_format">Usage Stats: %s</string>
+    <string name="usage_stats_granted">Granted</string>
+    <string name="usage_stats_denied">Not granted</string>
+    <string name="usage_stats_settings_button">Configure Usage Stats</string>
+
+    <!-- PIN input -->
+    <string name="enter_pin_title">Enter PIN code</string>
+    <string name="enter_pin_hint">Enter 6-digit PIN</string>
+    <string name="enter_pin_error">Enter PIN code</string>
+    <string name="wrong_pin_error">Wrong PIN</string>
+
+    <!-- Code input messages -->
+    <string name="code_length_error">Code must be 6 digits</string>
+    <string name="code_already_used_error">Code already used</string>
+    <string name="code_activated_format">Code activated! Added %d minutes</string>
+    <string name="code_not_found_error">Code not found</string>
+
+    <!-- Services and notifications -->
+    <string name="accessibility_service_description">KidLock service for controlling app usage time on Android TV. Enable this service for automatic app blocking when time runs out. Without this service, the app cannot block access to other apps.</string>
+    <string name="time_limit_reached">Time limit reached</string>
+    <string name="time_limit_reached_message">TV usage time is over. Enter a code to continue.</string>
+    <string name="time_limit_notifications">Time limit notifications</string>
+    <string name="accessibility_instructions">To enable app blocking, you need to turn on Accessibility Service:\n\n1. Press the \"Configure Accessibility Service\" button\n2. Find \"KidLock\" in the services list\n3. Turn on the toggle next to KidLock\n4. Confirm enabling the service\n\nOnce enabled, the service will automatically block apps when time runs out.</string>
+    <string name="usage_stats_instructions">To track app usage time, you need to grant Usage Stats permission:\n\n1. Press the \"Configure Usage Stats\" button\n2. Find \"KidLock\" in the apps list\n3. Turn on \"Allow usage access\"\n4. Return to the app\n\nWithout this permission, the app cannot track usage time of other apps.</string>
+
+    <!-- Time formatting -->
+    <string name="time_format_hours_minutes">%1$d h %2$d min</string>
+    <string name="time_format_hours_only">%d h</string>
+    <string name="time_format_minutes_only">%d min</string>
+    <string name="limit_set_format">Limit set: %s</string>
+
+    <!-- Admin messages -->
+    <string name="limit_negative_error">Limit cannot be negative</string>
+    <string name="code_count_error">Code count must be between 1 and 100</string>
+    <string name="time_negative_error">Time cannot be negative</string>
+    <string name="codes_generated_format">Generated %1$d codes for %2$d minutes each</string>
+    <string name="code_deleted">Code deleted</string>
+    <string name="pin_format_error">PIN must be 6 digits</string>
+    <string name="pin_changed">PIN changed</string>
+    <string name="time_unlocked">Time unlocked</string>
+    <string name="autostart_enabled">Autostart enabled</string>
+    <string name="autostart_disabled">Autostart disabled</string>
+    <string name="blocking_requires_permissions">All permissions are required to enable blocking</string>
+    <string name="blocking_enabled">Blocking enabled</string>
+    <string name="blocking_disabled">Blocking disabled</string>
+    
+    <!-- Dashboard -->
+    <string name="unlock_now">Unlock Now</string>
+    <string name="status_locked">Locked</string>
+    <string name="status_unlocked">Unlocked</string>
+    <string name="save_limit">Save Limit</string>
+    <string name="unlock_until_tomorrow">Unlock Until Tomorrow</string>
+    <string name="lock_until_tomorrow">Lock Until Tomorrow</string>
+    <string name="time_locked">Locked until tomorrow</string>
+    <string name="time_remaining_format">Time Remaining: %s</string>
+    <string name="time_expired">TIME EXPIRED</string>
+    
+    <!-- Access section -->
+    <string name="access_management">Access Management</string>
+    <string name="active_codes">Active Codes</string>
+    <string name="qty_hint">Qty</string>
+    
+    <!-- Settings section -->
+    <string name="admin_pin_label">Admin PIN</string>
+    <string name="enter_6_digit_pin">Enter 6-digit PIN</string>
+    <string name="change_pin">Change PIN</string>
+    
+    <!-- System -->
+    <string name="system_permissions_title">System Permissions</string>
+    <string name="system_diagnostics_title">Diagnostics</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_welcome_title">Welcome to KidLock</string>
+    <string name="onboarding_welcome_description">Set up screen time protection in a few steps.</string>
+    <string name="onboarding_start_button">Start setup</string>
+
+    <string name="onboarding_accessibility_title">Accessibility permission</string>
+    <string name="onboarding_accessibility_description">Required to block apps and control screen time.</string>
+    <string name="onboarding_accessibility_steps">1. Open Accessibility settings.\n2. Find KidLock in the services list.\n3. Turn the toggle on and confirm.\n4. Return to the app.</string>
+    <string name="onboarding_accessibility_status_placeholder">Status: --</string>
+    <string name="onboarding_accessibility_status_format">Status: %s</string>
+
+    <string name="onboarding_usage_stats_title">Usage Access permission</string>
+    <string name="onboarding_usage_stats_description">Required to track app usage time.</string>
+    <string name="onboarding_usage_stats_steps">1. Open Usage Access settings.\n2. Select KidLock from the apps list.\n3. Enable usage access.\n4. Return to the app.</string>
+    <string name="onboarding_usage_stats_status_placeholder">Status: --</string>
+    <string name="onboarding_usage_stats_status_format">Status: %s</string>
+    <string name="onboarding_usage_stats_warning">You can skip this, but limits may be inaccurate.</string>
+
+    <string name="onboarding_time_limit_title">Base daily limit</string>
+    <string name="onboarding_time_limit_description">Choose a preset.</string>
+    <string name="onboarding_preset_30">30 min</string>
+    <string name="onboarding_preset_60">1 hour</string>
+    <string name="onboarding_preset_120">2 hours</string>
+    <string name="onboarding_preset_180">3 hours</string>
+    <string name="onboarding_time_limit_selected_placeholder">Select a limit.</string>
+    <string name="onboarding_time_limit_selected_format">Selected limit: %d min</string>
+
+    <string name="onboarding_pin_title">Create admin PIN</string>
+    <string name="onboarding_pin_description">PIN protects access to settings.</string>
+    <string name="onboarding_pin_hint">PIN (6 digits)</string>
+    <string name="onboarding_pin_confirm_hint">Confirm PIN</string>
+    <string name="onboarding_pin_mismatch">PIN does not match.</string>
+
+    <string name="onboarding_codes_title">First access codes</string>
+    <string name="onboarding_codes_description">Generate codes to extend time.</string>
+    <string name="onboarding_codes_generate">Generate codes</string>
+    <string name="onboarding_codes_empty">No codes yet.</string>
+    <string name="onboarding_code_format">Code %1$s — +%2$d min</string>
+    <string name="onboarding_finish">Done</string>
+    <string name="onboarding_open_admin">Go to admin panel</string>
+
+    <string name="onboarding_open_settings">Open settings</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_back">Back</string>
+    <string name="onboarding_skip">Skip</string>
+</resources>

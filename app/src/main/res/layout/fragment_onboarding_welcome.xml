@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/admin_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="48dp">
+
+    <TextView
+        android:id="@+id/tvWelcomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/onboarding_welcome_title"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvWelcomeDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/onboarding_welcome_description"
+        android:textColor="@color/admin_text_secondary"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnStartOnboarding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_admin_button"
+        app:backgroundTint="@null"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:nextFocusUp="@id/btnStartOnboarding"
+        android:nextFocusDown="@id/btnStartOnboarding"
+        android:nextFocusLeft="@id/btnStartOnboarding"
+        android:nextFocusRight="@id/btnStartOnboarding"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="12dp"
+        android:stateListAnimator="@null"
+        android:text="@string/onboarding_start_button"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+</LinearLayout>

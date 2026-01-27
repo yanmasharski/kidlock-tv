@@ -1,0 +1,434 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/admin_background">
+
+    <!-- Sidebar -->
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="48dp"
+        android:background="@color/admin_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="32dp">
+            
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@android:drawable/ic_lock_idle_lock"
+                android:tint="@color/white" />
+                
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp" />
+
+            <Button
+                android:id="@+id/btnExit"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="12dp"
+                android:background="@drawable/selector_ghost_button"
+                android:backgroundTint="@null"
+                android:drawableTop="@android:drawable/ic_menu_close_clear_cancel"
+                android:drawableTint="@color/white"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSections"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false" />
+
+    </LinearLayout>
+
+    <!-- Main Content -->
+    <FrameLayout
+        android:id="@+id/content_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:padding="48dp">
+
+        <!-- Section: Set Time Limit (Dashboard) -->
+        <LinearLayout
+            android:id="@+id/layout_section_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvRemainingTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1:30:00"
+                android:textSize="56sp"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginBottom="16dp" />
+
+            <TextView
+                android:id="@+id/tvLockStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status: Active"
+                android:textColor="@color/admin_text_secondary_light"
+                android:textSize="18sp"
+                android:layout_marginBottom="24dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="32dp">
+
+                <Button
+                    android:id="@+id/btnDecreaseTime"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:text="−"
+                    android:textSize="28sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_round_button"
+                    android:backgroundTint="@null"
+                    android:stateListAnimator="@null"
+                    android:focusable="true" />
+
+                <Button
+                    android:id="@+id/btnSetLimit"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    android:text="@string/save_limit"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_admin_button"
+                    android:backgroundTint="@null"
+                    android:stateListAnimator="@null"
+                    android:focusable="true" />
+
+                <Button
+                    android:id="@+id/btnIncreaseTime"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:text="+"
+                    android:textSize="28sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_round_button"
+                    android:backgroundTint="@null"
+                    android:stateListAnimator="@null"
+                    android:focusable="true" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnUnlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/unlock_until_tomorrow"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_admin_button"
+                android:backgroundTint="@null"
+                android:stateListAnimator="@null"
+                android:padding="24dp"
+                android:focusable="true" />
+
+        </LinearLayout>
+
+        <!-- Section: Access (Codes) -->
+        <ScrollView
+            android:id="@+id/layout_section_access"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/access_management"
+                    android:textSize="32sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Active Codes List (shown first, full list) -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/active_codes"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="16dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCodes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:clipToPadding="false"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Generate Codes Section -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/generate_codes_label"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="16dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <EditText
+                        android:id="@+id/etCodeCount"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/qty_hint"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:background="@drawable/bg_admin_input"
+                        android:padding="16dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <EditText
+                        android:id="@+id/etMinutesPerCode"
+                        android:layout_width="0dp"
+                        android:layout_weight="1.5"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/minutes_hint"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:background="@drawable/bg_admin_input"
+                        android:padding="16dp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnGenerateCodes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/generate_codes_paid"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_admin_button"
+                    android:backgroundTint="@null"
+                    android:focusable="true" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!-- Section: Settings (including PIN) -->
+        <ScrollView
+            android:id="@+id/layout_section_settings"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/section_settings"
+                    android:textSize="32sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Admin PIN -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/admin_pin_label"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="16dp" />
+
+                <EditText
+                    android:id="@+id/etNewPin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_6_digit_pin"
+                    android:inputType="numberPassword"
+                    android:maxLength="6"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/admin_text_secondary"
+                    android:background="@drawable/bg_admin_input"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp" />
+
+                <Button
+                    android:id="@+id/btnChangePin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/change_pin"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_admin_button"
+                    android:backgroundTint="@null"
+                    android:focusable="true"
+                    android:layout_marginBottom="32dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/admin_surface"
+                    android:layout_marginBottom="32dp" />
+
+                <!-- General Settings -->
+                <Switch
+                    android:id="@+id/switchAutostart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/autostart_label"
+                    android:textColor="@color/white"
+                    android:padding="16dp"
+                    android:focusable="true"
+                    android:background="@drawable/selector_row_background" />
+
+                <Switch
+                    android:id="@+id/switchBlocking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/app_blocking_label"
+                    android:textColor="@color/white"
+                    android:padding="16dp"
+                    android:focusable="true"
+                    android:background="@drawable/selector_row_background" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Section: System (Permissions) -->
+        <ScrollView
+            android:id="@+id/layout_section_system"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/section_system"
+                    android:textSize="32sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="24dp" />
+                
+                <!-- Accessibility -->
+                <TextView
+                    android:id="@+id/tvAccessibilityStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accessibility_status_placeholder"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:padding="8dp" />
+                
+                <TextView
+                    android:id="@+id/tvAccessibilityInstructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accessibility_instructions"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="8dp" />
+
+                <Button
+                    android:id="@+id/btnOpenAccessibilitySettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/accessibility_settings_button"
+                    android:layout_marginBottom="24dp"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_admin_button"
+                    android:backgroundTint="@null"
+                    android:focusable="true"/>
+                
+                <!-- Usage Stats -->
+                <TextView
+                    android:id="@+id/tvUsageStatsStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/usage_stats_status_placeholder"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:padding="8dp" />
+                
+                <TextView
+                    android:id="@+id/tvUsageStatsInstructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/usage_stats_instructions"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="8dp" />
+
+                <Button
+                    android:id="@+id/btnOpenUsageStatsSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/usage_stats_settings_button"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_admin_button"
+                    android:backgroundTint="@null"
+                    android:focusable="true" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Global Message moved inside container -->
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="24dp"
+            android:padding="16dp"
+            android:background="#CC000000"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</LinearLayout>

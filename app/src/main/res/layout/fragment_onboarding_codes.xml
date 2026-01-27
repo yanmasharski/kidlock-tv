@@ -1,0 +1,102 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/admin_background"
+    android:orientation="vertical"
+    android:padding="48dp">
+
+    <TextView
+        android:id="@+id/tvCodesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/onboarding_codes_title"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvCodesDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/onboarding_codes_description"
+        android:textColor="@color/admin_text_secondary"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvCodesList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="monospace"
+        android:text="@string/onboarding_codes_empty"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnGenerateInitialCodes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_admin_button"
+        app:backgroundTint="@null"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:nextFocusUp="@id/btnGenerateInitialCodes"
+        android:nextFocusDown="@id/btnFinishOnboarding"
+        android:nextFocusLeft="@id/btnGenerateInitialCodes"
+        android:nextFocusRight="@id/btnGenerateInitialCodes"
+        android:paddingHorizontal="28dp"
+        android:paddingVertical="10dp"
+        android:stateListAnimator="@null"
+        android:text="@string/onboarding_codes_generate"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnFinishOnboarding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_admin_button"
+            app:backgroundTint="@null"
+            android:focusable="true"
+            android:focusableInTouchMode="false"
+            android:nextFocusLeft="@id/btnFinishOnboarding"
+            android:nextFocusRight="@id/btnOpenAdminPanel"
+            android:nextFocusUp="@id/btnGenerateInitialCodes"
+            android:nextFocusDown="@id/btnFinishOnboarding"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            android:stateListAnimator="@null"
+            android:text="@string/onboarding_finish"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnOpenAdminPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/bg_admin_button"
+            app:backgroundTint="@null"
+            android:focusable="true"
+            android:focusableInTouchMode="false"
+            android:nextFocusLeft="@id/btnFinishOnboarding"
+            android:nextFocusRight="@id/btnOpenAdminPanel"
+            android:nextFocusUp="@id/btnGenerateInitialCodes"
+            android:nextFocusDown="@id/btnOpenAdminPanel"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="10dp"
+            android:stateListAnimator="@null"
+            android:text="@string/onboarding_open_admin"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+</LinearLayout>
