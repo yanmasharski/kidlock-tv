@@ -14,11 +14,26 @@
     <string name="remaining_time_admin_format">Оставшееся время: %s</string>
 
     <!-- Admin sections -->
-    <!-- Admin sections -->
     <string name="section_dashboard">Мониторинг</string>
     <string name="section_settings">Настройки</string>
     <string name="section_access">Доступ</string>
     <string name="section_system">Система</string>
+    <string name="section_about">О программе</string>
+
+    <!-- About section (AGPLv3 compliance) -->
+    <string name="about_title">О программе</string>
+    <string name="about_app_description">Приложение для родительского контроля экранного времени на Android TV</string>
+    <string name="about_copyright">Copyright (C) 2026 Yan Masharski</string>
+    <string name="about_license_title">Лицензия</string>
+    <string name="about_license_text">This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</string>
+    <string name="about_warranty_title">Отказ от гарантий</string>
+    <string name="about_warranty_text">This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.</string>
+    <string name="about_source_code_title">Исходный код</string>
+    <string name="about_source_code_url">https://github.com/yanmasharski/kidlock-tv</string>
+    <string name="about_license_url">https://www.gnu.org/licenses/agpl-3.0.html</string>
+    <string name="about_view_source_code">Открыть исходный код</string>
+    <string name="about_view_license">Открыть полный текст лицензии</string>
+    <string name="about_version_format">Версия: %s</string>
 
     <!-- Codes section -->
     <string name="generate_codes_label">Генерация кодов:</string>
@@ -60,6 +75,9 @@
     <string name="usage_stats_granted">Разрешено</string>
     <string name="usage_stats_denied">Не разрешено</string>
     <string name="usage_stats_settings_button">Настроить Usage Stats</string>
+    <string name="overlay_status_format">Поверх других окон: %s</string>
+    <string name="overlay_settings_button">Настроить отображение поверх окон</string>
+    <string name="overlay_instructions">Для отображения интерфейса KidLock поверх других приложений (блокировки), необходимо предоставить разрешение Overlay Permission:\n\n1. Нажмите кнопку \"Настроить отображение поверх окон\"\n2. Найдите \"KidLock\" в списке приложений\n3. Включите переключатель \"Разрешить отображение поверх других окон\"\n4. Вернитесь в приложение.</string>
 
     <!-- PIN input -->
     <string name="enter_pin_title">Введите PIN-код</string>

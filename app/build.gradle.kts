@@ -7,6 +7,10 @@ android {
     namespace = "uk.telegramgames.kidlock"
     compileSdk = 34
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     defaultConfig {
         applicationId = "uk.telegramgames.kidlock"
         minSdk = 24

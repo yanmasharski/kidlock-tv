@@ -59,9 +59,27 @@ class ScreenTimeAccessibilityService : AccessibilityService() {
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
-        when (event.eventType) {
-            AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED -> {
-                handleWindowStateChanged(event)
+        // Минимизация шума: реагируем только на смену окон
+        if (event.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+            handleWindowStateChanged(event)
+            checkAndRestartMainApp()
+        }
+    }
+
+    private fun checkAndRestartMainApp() {
+        // Если блокировка включена, проверяем, нужно ли вернуть фокус KidLock
+        if (!dataRepository.isBlockingEnabled()) return
+
+        // Если текущее приложение не KidLock и время вышло, перезапускаем проверку
+        val currentPackage = getCurrentPackageName()
+        if (currentPackage != null && currentPackage != packageName) {
+            dataRepository.ensureDailyResetIfNeeded()
+            val dailyLimit = dataRepository.getDailyTimeLimitMinutes()
+            val addedTime = dataRepository.getAddedTimeMinutes()
+            val hasTime = usageStatsHelper.hasRemainingTime(dailyLimit, addedTime, currentPackage, currentSessionStartTime)
+            
+            if (!hasTime) {
+                blockAppLaunch()
             }
         }
     }

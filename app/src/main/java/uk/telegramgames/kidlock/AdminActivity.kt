@@ -1,6 +1,8 @@
 package uk.telegramgames.kidlock
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import uk.telegramgames.kidlock.BuildConfig
 
 class AdminActivity : AppCompatActivity() {
     private lateinit var viewModel: AdminViewModel
@@ -25,6 +28,7 @@ class AdminActivity : AppCompatActivity() {
     private lateinit var layoutSectionSettings: View
     private lateinit var layoutSectionAccess: View
     private lateinit var layoutSectionSystem: View
+    private lateinit var layoutSectionAbout: View
     
     private lateinit var tvRemainingTime: TextView
     private lateinit var tvLockStatus: TextView
@@ -50,6 +54,14 @@ class AdminActivity : AppCompatActivity() {
     private lateinit var tvUsageStatsStatus: TextView
     private lateinit var tvUsageStatsInstructions: TextView
     private lateinit var btnOpenUsageStatsSettings: Button
+    
+    private lateinit var tvOverlayStatus: TextView
+    private lateinit var tvOverlayInstructions: TextView
+    private lateinit var btnOpenOverlaySettings: Button
+    
+    private lateinit var tvAboutVersion: TextView
+    private lateinit var btnViewLicense: Button
+    private lateinit var btnViewSourceCode: Button
     
     private lateinit var tvMessage: TextView
 
@@ -82,6 +94,10 @@ class AdminActivity : AppCompatActivity() {
         
         setupPrimaryButton(btnOpenAccessibilitySettings)
         setupPrimaryButton(btnOpenUsageStatsSettings)
+        setupPrimaryButton(btnOpenOverlaySettings)
+        
+        setupPrimaryButton(btnViewLicense)
+        setupPrimaryButton(btnViewSourceCode)
         
         setupPrimaryButton(btnExit)
     }
@@ -101,6 +117,7 @@ class AdminActivity : AppCompatActivity() {
         layoutSectionSettings = findViewById(R.id.layout_section_settings)
         layoutSectionAccess = findViewById(R.id.layout_section_access)
         layoutSectionSystem = findViewById(R.id.layout_section_system)
+        layoutSectionAbout = findViewById(R.id.layout_section_about)
 
         tvRemainingTime = findViewById(R.id.tvRemainingTime)
         tvLockStatus = findViewById(R.id.tvLockStatus)
@@ -125,6 +142,17 @@ class AdminActivity : AppCompatActivity() {
         tvUsageStatsStatus = findViewById(R.id.tvUsageStatsStatus)
         tvUsageStatsInstructions = findViewById(R.id.tvUsageStatsInstructions)
         btnOpenUsageStatsSettings = findViewById(R.id.btnOpenUsageStatsSettings)
+
+        tvOverlayStatus = findViewById(R.id.tvOverlayStatus)
+        tvOverlayInstructions = findViewById(R.id.tvOverlayInstructions)
+        btnOpenOverlaySettings = findViewById(R.id.btnOpenOverlaySettings)
+
+        tvAboutVersion = findViewById(R.id.tvAboutVersion)
+        btnViewLicense = findViewById(R.id.btnViewLicense)
+        btnViewSourceCode = findViewById(R.id.btnViewSourceCode)
+        
+        // Set app version
+        tvAboutVersion.text = getString(R.string.about_version_format, BuildConfig.VERSION_NAME)
 
         tvMessage = findViewById(R.id.tvMessage)
 
@@ -152,6 +180,7 @@ class AdminActivity : AppCompatActivity() {
             AdminSection(3, getString(R.string.section_access)),
             AdminSection(2, getString(R.string.section_settings)),
             AdminSection(4, getString(R.string.section_system)),
+            AdminSection(6, getString(R.string.section_about)),
             AdminSection(5, getString(R.string.exit))
         )
 
@@ -174,6 +203,7 @@ class AdminActivity : AppCompatActivity() {
         layoutSectionSettings.visibility = if (sectionId == 2) View.VISIBLE else View.GONE
         layoutSectionAccess.visibility = if (sectionId == 3) View.VISIBLE else View.GONE
         layoutSectionSystem.visibility = if (sectionId == 4) View.VISIBLE else View.GONE
+        layoutSectionAbout.visibility = if (sectionId == 6) View.VISIBLE else View.GONE
         
         when (sectionId) {
             1 -> btnSetLimit.requestFocus()
@@ -192,6 +222,7 @@ class AdminActivity : AppCompatActivity() {
                 }
             }
             4 -> btnOpenAccessibilitySettings.requestFocus()
+            6 -> btnViewLicense.requestFocus()
         }
     }
 
@@ -238,6 +269,13 @@ class AdminActivity : AppCompatActivity() {
             tvUsageStatsStatus.text = getString(R.string.usage_stats_status_format, statusText)
             tvUsageStatsStatus.setTextColor(if (granted) getColor(R.color.status_good) else getColor(R.color.status_bad))
             tvUsageStatsInstructions.visibility = if (granted) View.GONE else View.VISIBLE
+        }
+
+        viewModel.isOverlayPermissionGranted.observe(this) { granted ->
+            val statusText = if (granted) getString(R.string.usage_stats_granted) else getString(R.string.usage_stats_denied)
+            tvOverlayStatus.text = getString(R.string.overlay_status_format, statusText)
+            tvOverlayStatus.setTextColor(if (granted) getColor(R.color.status_good) else getColor(R.color.status_bad))
+            tvOverlayInstructions.visibility = if (granted) View.GONE else View.VISIBLE
         }
 
         viewModel.isAutostartEnabled.observe(this) { enabled ->
@@ -341,6 +379,11 @@ class AdminActivity : AppCompatActivity() {
             viewModel.openUsageStatsSettings()
         }
 
+        btnOpenOverlaySettings.setOnClickListener {
+            tvOverlayInstructions.visibility = View.VISIBLE
+            viewModel.openOverlaySettings()
+        }
+
         switchAutostart.setOnCheckedChangeListener { _, isChecked ->
             viewModel.setAutostartEnabled(isChecked)
         }
@@ -349,8 +392,25 @@ class AdminActivity : AppCompatActivity() {
             viewModel.setBlockingEnabled(isChecked)
         }
 
+        btnViewLicense.setOnClickListener {
+            openUrl(getString(R.string.about_license_url))
+        }
+
+        btnViewSourceCode.setOnClickListener {
+            openUrl(getString(R.string.about_source_code_url))
+        }
+
         btnExit.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun openUrl(url: String) {
+        try {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
+        } catch (e: Exception) {
+            Log.e("KidLock", "Failed to open URL: $url", e)
         }
     }
 

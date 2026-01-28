@@ -18,3 +18,5 @@ out/
 # OS
 .DS_Store
 Thumbs.db
+/app/release/baselineProfiles
+app/release/output-metadata.json

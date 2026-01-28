@@ -64,8 +64,8 @@ That's why I'm making KidLock **open source and freely available to everyone**. 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yanmasharski/kidlock-app.git
-   cd kidlock-app
+   git clone https://github.com/yanmasharski/kidlock-tv.git
+   cd kidlock-tv
    ```
 
 2. Open the project in Android Studio
@@ -115,7 +115,7 @@ This project is licensed under the GNU Affero General Public License v3.0 (AGPL 
 
 ## 💬 Support & Feedback
 
-If you encounter any issues or have suggestions for improvement, please [open an issue](https://github.com/yanmasharski/kidlock-app/issues) on GitHub.
+If you encounter any issues or have suggestions for improvement, please [open an issue](https://github.com/yanmasharski/kidlock-tv/issues) on GitHub.
 
 ## 🌟 Why Open Source?
 

@@ -10,7 +10,7 @@
         android:layout_width="360dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="48dp"
+        android:padding="40dp"
         android:background="@color/admin_background">
 
         <LinearLayout
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:layout_marginBottom="32dp">
+            android:layout_marginBottom="24dp">
             
             <ImageView
                 android:layout_width="32dp"
@@ -412,7 +412,188 @@
                     android:textColor="@color/white"
                     android:background="@drawable/bg_admin_button"
                     android:backgroundTint="@null"
+                    android:focusable="true"
+                    android:layout_marginBottom="24dp" />
+                
+                <!-- Overlay Permission -->
+                <TextView
+                    android:id="@+id/tvOverlayStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/overlay_status_format"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:padding="8dp" />
+                
+                <TextView
+                    android:id="@+id/tvOverlayInstructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/overlay_instructions"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="14sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="8dp" />
+
+                <Button
+                    android:id="@+id/btnOpenOverlaySettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/overlay_settings_button"
+                    android:textAllCaps="false"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_admin_button"
+                    android:backgroundTint="@null"
                     android:focusable="true" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Section: About (AGPLv3 compliance) -->
+        <ScrollView
+            android:id="@+id/layout_section_about"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_title"
+                    android:textSize="32sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:id="@+id/tvAboutVersion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_version_format"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_app_description"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Copyright -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_copyright"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="24dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/admin_surface"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- License -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_license_title"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_license_text"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp" />
+
+                <Button
+                    android:id="@+id/btnViewLicense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_view_license"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_admin_button"
+                    android:backgroundTint="@null"
+                    android:focusable="true"
+                    android:layout_marginBottom="24dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/admin_surface"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Warranty Disclaimer -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_warranty_title"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_warranty_text"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="24dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/admin_surface"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Source Code -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_source_code_title"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="8dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_source_code_url"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp" />
+
+                <Button
+                    android:id="@+id/btnViewSourceCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/about_view_source_code"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_admin_button"
+                    android:backgroundTint="@null"
+                    android:focusable="true"
+                    android:layout_marginBottom="24dp" />
+
             </LinearLayout>
         </ScrollView>
 

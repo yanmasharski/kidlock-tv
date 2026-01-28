@@ -2,6 +2,8 @@ package uk.telegramgames.kidlock
 
 import android.app.Application
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.provider.Settings
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
@@ -30,6 +32,9 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _isUsageStatsPermissionGranted = MutableLiveData<Boolean>()
     val isUsageStatsPermissionGranted: LiveData<Boolean> = _isUsageStatsPermissionGranted
+
+    private val _isOverlayPermissionGranted = MutableLiveData<Boolean>()
+    val isOverlayPermissionGranted: LiveData<Boolean> = _isOverlayPermissionGranted
 
     private val _isAutostartEnabled = MutableLiveData<Boolean>()
     val isAutostartEnabled: LiveData<Boolean> = _isAutostartEnabled
@@ -72,7 +77,13 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
             getApplication()
         )
         val isUsageStatsGranted = usageStatsHelper.hasUsageStatsPermission()
-        val allPermissionsGranted = isAccessibilityEnabled && isUsageStatsGranted
+        val isOverlayGranted = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Settings.canDrawOverlays(getApplication())
+        } else {
+            true
+        }
+        
+        val allPermissionsGranted = isAccessibilityEnabled && isUsageStatsGranted && isOverlayGranted
         _canEnableBlocking.value = allPermissionsGranted
 
         if (!allPermissionsGranted && blockingEnabled) {
@@ -190,11 +201,17 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
             getApplication()
         )
         val isUsageStatsGranted = usageStatsHelper.hasUsageStatsPermission()
+        val isOverlayGranted = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Settings.canDrawOverlays(getApplication())
+        } else {
+            true
+        }
 
         _isAccessibilityServiceEnabled.value = isAccessibilityEnabled
         _isUsageStatsPermissionGranted.value = isUsageStatsGranted
+        _isOverlayPermissionGranted.value = isOverlayGranted
 
-        val allPermissionsGranted = isAccessibilityEnabled && isUsageStatsGranted
+        val allPermissionsGranted = isAccessibilityEnabled && isUsageStatsGranted && isOverlayGranted
         _canEnableBlocking.value = allPermissionsGranted
 
         if (!allPermissionsGranted) {
@@ -216,6 +233,17 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
         usageStatsHelper.requestUsageStatsPermission()
     }
 
+    fun openOverlaySettings() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val intent = Intent(
+                Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                Uri.parse("package:${getApplication<Application>().packageName}")
+            )
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            getApplication<Application>().startActivity(intent)
+        }
+    }
+
     fun setAutostartEnabled(enabled: Boolean) {
         dataRepository.setAutostartEnabled(enabled)
         _isAutostartEnabled.value = enabled
@@ -230,7 +258,8 @@ class AdminViewModel(application: Application) : AndroidViewModel(application) {
         // Проверяем разрешения перед включением
         val isAccessibilityEnabled = _isAccessibilityServiceEnabled.value ?: false
         val isUsageStatsGranted = _isUsageStatsPermissionGranted.value ?: false
-        val allPermissionsGranted = isAccessibilityEnabled && isUsageStatsGranted
+        val isOverlayGranted = _isOverlayPermissionGranted.value ?: false
+        val allPermissionsGranted = isAccessibilityEnabled && isUsageStatsGranted && isOverlayGranted
         
         // Если пытаемся включить без разрешений, не позволяем
         if (enabled && !allPermissionsGranted) {
