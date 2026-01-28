@@ -60,7 +60,7 @@ That's why I'm making KidLock **open source and freely available to everyone**. 
 - Android TV device or emulator running Android 7.0 or higher
 - Android Studio (for building from source)
 
-### Installation
+### Installation (from source)
 
 1. Clone the repository:
    ```bash
@@ -71,6 +71,16 @@ That's why I'm making KidLock **open source and freely available to everyone**. 
 2. Open the project in Android Studio
 
 3. Build and run on your Android TV device or emulator
+
+### Installation (from APK)
+
+If you just want to install the app without building it yourself, you can use the prebuilt APK:
+
+1. Locate the release APK in this repository at `app/release/app-release.apk`
+2. Copy the APK to your Android TV device (for example via USB drive, network share, or `adb`)
+3. On your Android TV, enable installation from unknown sources in system settings (if not already enabled)
+4. Open the APK on your TV (e.g. with a file manager) and confirm the installation
+5. Once installed, you will find **KidLock** in your apps list on Android TV
 
 ### First-Time Setup
 
